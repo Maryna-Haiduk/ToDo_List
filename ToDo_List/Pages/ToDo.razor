@@ -1,0 +1,92 @@
+﻿@inject ToDo_List.Data.Repository.IRepository repository;
+
+
+@page "/todo"
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            <h2 class="text-center">ToDo (@todos.Count(item => !item.IsDone))</h2>
+
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Is Done</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @foreach(var item in todos)
+                {
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div style="@(item.IsDone ? "color: green; text-decoration: line-through; " : "color: red")">
+                                    @item.Title
+                                </div>
+                            </td>
+                            <td>
+                                @if (!item.IsDone)
+                                {
+                                    <input type="checkbox" value="item.IsDone" @onchange="(() => StatusUpdater(item))" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" checked value="item.IsDone" @onchange="(() => StatusUpdater(item))" />
+                                }
+                                @*<input type="checkbox" @bind="item.IsDone" />*@
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" @onclick="(() => DeleteToDo(item.Id))">Delete</button>
+                          </td>
+                        </tr>
+                    </tbody> 
+                }
+            </table>
+
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" placeholder="Write new task" @bind="newToDo"/>
+                </div>
+                <div class="col">
+                    <button class="btn btn-success" @onclick="AddToDo">Add Task</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+@code {
+
+    private IEnumerable<ToDoItem> todos = new List<ToDoItem>();
+
+    protected override void OnInitialized()
+    {
+        todos = repository.Read();
+    }
+
+    private string newToDo;
+    private bool isDone = false;
+
+    private void AddToDo()
+    {
+        if (!string.IsNullOrWhiteSpace(newToDo))
+        {
+            repository.Create(newToDo, isDone);
+
+            newToDo = string.Empty;
+        }
+    }
+
+    private void DeleteToDo(int id)
+    {
+        repository.Delete(id);
+    }
+
+    private void StatusUpdater (ToDoItem updatedItem)
+    {
+        updatedItem.IsDone = !updatedItem.IsDone;
+        repository.Update(updatedItem);
+    }
+}

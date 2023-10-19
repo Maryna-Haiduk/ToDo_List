@@ -1,0 +1,8 @@
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.csproj.AssemblyReference.cache
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.GeneratedMSBuildEditorConfig.editorconfig
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.AssemblyInfoInputs.cache
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.AssemblyInfo.cs
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.csproj.CoreCompileInputs.cache
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.MvcApplicationPartsAssemblyInfo.cache
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.RazorAssemblyInfo.cache
+D:\1-Programming\ASP.NET\ToDo_List\ToDo_List\obj\Debug\net6.0\ToDo_List.RazorAssemblyInfo.cs
